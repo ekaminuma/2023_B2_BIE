@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>謎解き</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #question {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #choices {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        #choices li {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>謎解き</h1>
+        <p id="question"></p>
+        <ul id="choices"></ul>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        var questions = [
+            {
+                question: "鍵がありますが、ロックを開けることはできません。それは何でしょう？",
+                choices: ["地図", "ピアノ", "コンピュータ", "宝箱"],
+                answer: 0
+            },
+            {
+                question: "私は鉱山から取られ、木のケースに閉じ込められます。一度開放されることはありませんが、ほとんどの人に使用されています。私は何でしょう？",
+                choices: ["ダイヤモンド", "鉛筆", "電卓", "本"],
+                answer: 1
+            },
+            {
+                question: "鼓動しない心臓があります。それは何でしょう？",
+                choices: ["時計", "岩", "鳥", "花"],
+                answer: 2
+            },
+            {
+                question: "私は口を持たず、耳を持ちます。身体はありませんが、風で生き返ります。私は何でしょう？",
+                choices: ["川", "エコー", "幽霊", "影"],
+                answer: 3
+            }
+        ];
+
+        var currentQuestion = 0;
+        var score = 0;
+
+        var questionElement = document.getElementById("question");
+        var choicesElement = document.getElementById("choices");
+        var resultElement = document.getElementById("result");
+
+        function loadQuestion() {
+            questionElement.textContent = questions[currentQuestion].question;
+            choicesElement.innerHTML = "";
+
+            for (var i = 0; i < questions[currentQuestion].choices.length; i++) {
+                var li = document.createElement("li");
+                var button = document.createElement("button");
+                button.className = "button";
+                button.textContent = questions[currentQuestion].choices[i];
+                button.setAttribute("data-index", i);
+                button.onclick = checkAnswer;
+                li.appendChild(button);
+                choicesElement.appendChild(li);
+            }
+
+            resultElement.textContent = "";
+        }
+
+        function checkAnswer() {
+            var selectedIndex = parseInt(this.getAttribute("data-index"));
+            if (selectedIndex === questions[currentQuestion].answer) {
+                score++;
+            }
+
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            questionElement.style.display = "none";
+            choicesElement.style.display = "none";
+            resultElement.textContent = "あなたの正解数は " + score + " / " + questions.length + " です。";
+        }
+
+        // ページ読み込み時に最初の問題を表示
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>
