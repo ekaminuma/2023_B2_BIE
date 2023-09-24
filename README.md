@@ -16,8 +16,8 @@ __2023年度　情報工学基礎__
 10. データを読む（続）：　相関と因果性、交絡因子、母集団と標本、標本分散と不偏分散、クロス集計表、相関係数行列、散布図行列
 11.　データを説明する, 可視化 :  データ可視化, Business Intelligenceツール, Google Looker Studio
 12.  コンテンツ生成AI1  生成AIとは　: Prompt Engineering誕生と能力格差, ChatGPT, DALLE mini
-13.  コンテンツ生成AI2  コード生成　:　生成AIツールの比較(Bard vs ChatGPT)、自律型エージェント、コード生成(Web App)
-14.  コンテンツ生成AI3 マルチモーダル入力 : マルチモーダル生成 AI でできること, Google Bardでマルチモーダル生成 AI
+13.  <span style="color: blue;">コンテンツ生成AI2  コード生成　:　生成AIツールの比較(Bard vs ChatGPT)、自律型エージェント、コード生成(Web App)</span>
+14.  <span style="color: blue;">コンテンツ生成AI3 マルチモーダル入力 : マルチモーダル生成 AI でできること, Google Bardでマルチモーダル生成 AI</span>
 15. プレゼンテーション（生成Web App）
 
 ---
